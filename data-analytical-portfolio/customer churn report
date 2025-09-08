@@ -1,0 +1,28 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+# Load dataset
+df = pd.read_csv("telco_churn.csv")
+
+# Basic EDA
+print(df.head())
+sns.countplot(x='Churn', data=df)
+plt.show()
+
+# Feature prep
+X = df[['tenure', 'MonthlyCharges', 'TotalCharges']]
+y = df['Churn'].map({'Yes':1, 'No':0})
+
+X = X.fillna(0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print(classification_report(y_test, y_pred))
