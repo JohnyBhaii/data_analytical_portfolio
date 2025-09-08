@@ -1,0 +1,11 @@
+data-analyst-portfolio/
+ ├── sql_project_ecommerce/
+ │    ├── ecommerce_sales_analysis.sql
+ │    └── README.md
+ ├── python_project_churn/
+ │    ├── churn_analysis.ipynb
+ │    └── README.md
+ ├── viz_project_covid/
+ │    ├── covid_dashboard.ipynb
+ │    └── README.md
+ └── README.md   <-- main portfolio overview
