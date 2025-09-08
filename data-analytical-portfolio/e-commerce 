@@ -1,0 +1,20 @@
+-- Total revenue by month
+SELECT DATE_FORMAT(InvoiceDate, '%Y-%m') AS Month, 
+       ROUND(SUM(Quantity * UnitPrice), 2) AS Revenue
+FROM OnlineRetail
+GROUP BY Month
+ORDER BY Month;
+
+-- Top 10 best-selling products
+SELECT Description, SUM(Quantity) AS TotalSold
+FROM OnlineRetail
+GROUP BY Description
+ORDER BY TotalSold DESC
+LIMIT 10;
+
+-- Top 5 customers by spending
+SELECT CustomerID, ROUND(SUM(Quantity * UnitPrice), 2) AS TotalSpent
+FROM OnlineRetail
+GROUP BY CustomerID
+ORDER BY TotalSpent DESC
+LIMIT 5;
