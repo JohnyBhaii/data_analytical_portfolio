@@ -1,0 +1,15 @@
+import pandas as pd
+import plotly.express as px
+
+# Load dataset
+df = pd.read_csv("covid_data.csv")
+
+# Global Cases over time
+fig = px.line(df, x="date", y="cases", color="country", 
+              title="COVID-19 Cases Over Time")
+fig.show()
+
+# Deaths vs Vaccinations
+fig = px.scatter(df, x="vaccinations", y="deaths", color="country",
+                 title="Vaccinations vs Deaths")
+fig.show()
